@@ -27,12 +27,15 @@ while (true)
     }
 escolhaopcao:
     var opcao = Int16.Parse(Console.ReadLine());
-    if (opcao > 1 && opcao < produtosNaLoja.Count)
+    if (opcao >= 1 && opcao <= produtosNaLoja.Count)
     {
         Console.WriteLine("Digite a quantidade pretendida:");
         escolhaquantidade:
         var quantidade = Int16.Parse(Console.ReadLine());
         var stock = produtosNaLoja[opcao - 1].Stock;
+        
+        //Validar se o produto já não existe na lista de compras e caso exista ter em conta a quantidade já em carrinho vs a qunatide stock existente
+        
         if (stock >= quantidade)
         {
             var item = new Item(produtosNaLoja[opcao - 1], quantidade);
