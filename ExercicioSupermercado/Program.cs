@@ -34,8 +34,13 @@ escolhaopcao:
         var quantidade = Int16.Parse(Console.ReadLine());
         var stock = produtosNaLoja[opcao - 1].Stock;
         
-        //Validar se o produto já não existe na lista de compras e caso exista ter em conta a quantidade já em carrinho vs a qunatide stock existente
-        
+        foreach (var compra in listaCompras)
+        {
+            if (compra.Produto == produtosNaLoja[opcao - 1])
+            {
+                stock -= compra.Quantidade;
+            }
+        }
         if (stock >= quantidade)
         {
             var item = new Item(produtosNaLoja[opcao - 1], quantidade);
